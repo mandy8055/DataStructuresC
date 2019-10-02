@@ -20,7 +20,16 @@ int main(void){
 	printf("The total number of non-leaf(Internal) nodes in the given binary tree is %d\n", countNonLeaf(root));
 	printf("The height of the given binary tree is %d\n", calcHeight(root));
 	
-	if(checkSBT(root))printf("The given binary tree is a strict binary tree\n");
-	else printf("The given binary tree is not a strict binary tree\n");		
+//	if(checkSBT(root))printf("The given binary tree is a strict binary tree\n");
+//	else printf("The given binary tree is not a strict binary tree\n");	
+
+//  Convert the given tree into its mirror image
+	struct BTNode* root2 = mirrorImage(root);
+	
+	if(checkBTEqual(root, root2))printf("The given two trees are equal");
+	else printf("The given two trees are not equal");
+		
+	
+//	
 	return 0;
 }

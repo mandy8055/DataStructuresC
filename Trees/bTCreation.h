@@ -119,4 +119,33 @@ bool checkSBT(struct BTNode* root){
 	return false;
 }
 
-//
+// Convert the given binary tree into its mirror
+struct BTNode* mirrorImage(struct BTNode* root){
+//	Base Case
+	if(root == NULL)return root;
+	if(root->leftC == NULL && root->rightC == NULL)return root;
+	else{
+		struct BTNode* temp = NULL;
+//		Do the trees
+		mirrorImage(root->leftC);
+		mirrorImage(root->rightC);
+		
+//		Swap the left and right child
+		temp = mirrorImage(root->leftC);
+		root->leftC = root->rightC;
+		root->rightC = temp;
+		
+		return root;
+	}
+}
+
+// Check whether two given Binary trees are equal or not
+bool checkBTEqual(struct BTNode* root1, struct BTNode* root2){
+//	Base Case
+	if(root1 == NULL && root2 == NULL)return true;
+	if((root1 != NULL && root2 == NULL) || (root1 == NULL && root2 != NULL))return false;
+	if(root1->data == root2->data){
+		return (checkBTEqual(root1->leftC, root2->leftC) && checkBTEqual(root1->rightC, root2->rightC)); 
+	}
+	return false;
+}
