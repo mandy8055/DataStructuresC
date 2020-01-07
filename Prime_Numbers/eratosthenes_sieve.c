@@ -26,7 +26,7 @@ int eratosthenesSieve(int n){
       for(int j = i * i; j <= n; j += i)
         primes[j] = 0;
   }
-  // 4. Print p
+  // 4. Print p (Time Complexity: O(nloglogn))
   for(int p = 2; p <= n; p++)
     if(primes[p])
       printf("%d ", p);
