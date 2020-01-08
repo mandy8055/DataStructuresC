@@ -39,3 +39,20 @@ void eratosthenesSieve(int n){
 
   printf("\n");
 }
+
+// 3. Prime factorization of a number
+void primeFactorization(int n){
+  for(int i = 2; i * i <= n; i++){
+    if(n % i == 0){
+      int count = 0;
+      while(n % i == 0){
+        n /= i;
+        count++;
+      }
+      printf("(%d ^ %d)", i, count);
+    }
+  }
+  if(n != 1)printf("(%d ^ 1)", n);
+
+  printf("\n");
+}
