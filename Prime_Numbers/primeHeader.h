@@ -3,6 +3,8 @@
 
 // 1. Basic prime validation function
 bool isPrime(int num){
+  if(num == 0 || num == 1)
+    return false;
   if(num == 2 || num == 3)
     return true;
   if(num % 2 == 0)
