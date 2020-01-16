@@ -10,7 +10,7 @@ bool isPrime(int num){
   if(num % 2 == 0)
     return false;
   int i = 3;
-  while(i * i < num){
+  while(i * i <= num){
     if(num % i == 0)
       return false;
     i += 2;
