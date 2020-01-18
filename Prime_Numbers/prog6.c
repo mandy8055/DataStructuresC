@@ -31,7 +31,7 @@ bool eulerPseudoPrime(int n, int base){
         if(gcd(n, base) == 1){
             // Condition 3: base ^(n - 1) / 2 % N is either 1 or n - 1.
             int tmp1 = (n - 1) / 2;
-            int tmp = power(base, tmp1, n);
+            int tmp = powerForPseudoPrime(base, tmp1, n);
             if(tmp == 1 || tmp == (n - 1))res = true;  
             }
     }
