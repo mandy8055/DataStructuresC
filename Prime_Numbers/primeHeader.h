@@ -21,20 +21,20 @@ bool isPrime(int num){
 // 2. Eratosthenes sieve function
 void eratosthenesSieve(int n){
   int primes[n + 1];
-  // 1. Consider All elements as prime initially
+  // a. Consider All elements as prime initially
   for(int i = 0; i <= n; i++)
     primes[i] = 1;
 
-  // 2. Make primes[0] and primes[1] as 0 (since they are not prime)
+  // b. Make primes[0] and primes[1] as 0 (since they are not prime)
   primes[0] = primes[1] = 0;
 
-  // 3. Main case
+  // c. Main case
   for(int i = 2; i * i <= n; i++){
     if(primes[i] == 1)
       for(int j = i * i; j <= n; j += i)
         primes[j] = 0;
   }
-  // 4. Print p (Time Complexity: O(nloglogn))
+  // d. Print p (Time Complexity: O(nloglogn))
   for(int p = 2; p <= n; p++)
     if(primes[p])
       printf("%d ", p);
@@ -63,33 +63,32 @@ void primeFactorization(int n){
 long eratosthenesSieveAndSum(int n){
   int primes[n + 1];
   long sum = 0;
-  // 1. Consider All elements as prime initially
+  // a. Consider All elements as prime initially
   for(int i = 0; i <= n; i++)
     primes[i] = 1;
 
-  // 2. Make primes[0] and primes[1] as 0 (since they are not prime)
+  // b. Make primes[0] and primes[1] as 0 (since they are not prime)
   primes[0] = primes[1] = 0;
 
-  // 3. Main case
+  // c. Main case
   for(int i = 2; i * i <= n; i++){
     if(primes[i] == 1)
       for(int j = i * i; j <= n; j += i)
         primes[j] = 0;
   }
-  // 4. Print p (Time Complexity: O(nloglogn))
   for(int p = 2; p <= n; p++)
     if(primes[p])
       sum += p;
   return sum;
 }
-
+// 5. Greatest common divisor using Eucledean Method
 int gcd(int num1, int num2){
   // base case
   if(num2 == 0) return num1;
   // Main case
   return gcd(num2, num1 % num2);
 }
-
+// 6. Power function for specific purpose of calculatin PseudoPrime
 int powerForPseudoPrime(int a, int tmp, int n){
   // Base case
   if(tmp == 0)return 1;
