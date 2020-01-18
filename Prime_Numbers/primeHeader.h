@@ -90,7 +90,7 @@ int gcd(int num1, int num2){
   return gcd(num2, num1 % num2);
 }
 
-int power(int a, int tmp, int n){
+int powerForPseudoPrime(int a, int tmp, int n){
   // Base case
   if(tmp == 0)return 1;
   if(tmp == 1) return a;
