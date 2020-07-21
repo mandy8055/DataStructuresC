@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define SIZE 5
+#define SIZE 15
+// Global Variables
 int arr[SIZE];
 int top = -1;
 // Implementing stack using Arrays
@@ -20,6 +21,7 @@ void push(int data){
     printf("Stack Overflow: Stack is full");
     return;
   }
+  // Silly mistake source
   arr[++top] = data;
 }
 
