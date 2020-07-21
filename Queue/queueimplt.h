@@ -1,109 +1,172 @@
-#include<stdio.h>
-#include<stdlib.h>
-#define SIZE 6
+# include <stdio.h>
+# include <stdbool.h>
+# include <stdlib.h>
 
-// Global Variables
-int front = -1, rear = -1;
+# define SIZE 5
+
 int arr[SIZE];
-
-// Is Full Method implemented here
-int isFull()
-{
-    if( (front == rear + 1) || (front == 0 && rear == SIZE-1)) return 1;
-    return 0;
-}
-// Is Empty method implemented here
-int isEmpty()
-{
-    if(front == -1) return 1;
-    return 0;
+int front = -1;
+int rear = -1;
+// Simple Queue operations starts here
+bool isEmpty(){
+  return front == -1;
 }
 
-// Enqueue Method for Linear Queue implemented here
-void enqueue(int x){
-//	Base Case
-	if(isFull())
-//		Queue overflow condition
-		printf("\n Queue is full!! \n");
-	else{
-		if(rear == -1)
-			front = 0;
-		rear++;
-		arr[rear] = x;
-	}
+bool isFull(){
+  return (rear == SIZE - 1 && front == 0);
 }
 
-// Dequeue method for Linear Queue implemented here
-int dequeue(){
-	int y;
-//	Base Case
-	if(isEmpty()){
-//		Queue underflow condition
-		printf("\n Queue is empty !! \n");
-		exit(1);
-	}
-	else{
-		y = arr[front];
-		if(front == rear){
-			front = rear = -1;
-		}else{
-			front += 1;
-		}	
-	}
-	return y;
+void enqueue(int el){
+  if(isFull()){
+    printf("Queue is full cannot enqueue new element\n");
+    return;
+  }
+  else{
+    if(rear == -1)front = 0;
+    rear++;
+    arr[rear] = el;
+  }
 }
 
-// Circular Enqueue Implementation here
-void circularEnqueue(int x){
-	if(isFull()){
-		printf("\n Queue Full. Insertion impossible!! \n");
-		return;
-	}else{
-		if(rear == -1){
-			front = rear = 0;
-			arr[rear] = x;
-		}else{
-			rear = (rear + 1) % SIZE;
-			arr[rear] = x;
-		}
-	}
+int peek(){
+  if(!isEmpty())
+    return arr[front];
+  else{
+    printf("Queue is empty. Nothing to show...\n");
+    return -1;
+  }
 }
 
-// Circular Dequeue Implementation here
-int circularDequeue(){
-	int y;
-//	Base case
-	if(isEmpty()){
-		printf("\n Queue is empty. Deletion Impossible!! \n");
-		return -1;
-	}
-	else{
-		y = arr[front];
-		if(front == rear){
-			front = rear = -1;
-		}else{
-			front = (front + 1) % SIZE;
-		}
-	}
-	return y;
-}
-
-// Display Elements of the queue
-void display(){
-    int i;
-    if(isEmpty()) printf(" \n Empty Queue\n");
-    else
-    {
-        printf("\n Front -> %d ",front);
-        printf("\n Items -> ");
-        for( i = front; i !=rear; i=(i+1)%SIZE) {
-            printf("%d ",arr[i]);
-        }
-        printf("%d ",arr[i]);
-        printf("\n Rear -> %d \n",rear);
+void dequeue(){
+  if(isEmpty()){
+    printf("Underflow!!! Nothing to dequeue\n");
+    return;
+  }
+  else{
+    int y;
+    if(front == rear){
+      y = arr[front];
+      rear = front = -1;
+    }else{
+      y = arr[front];
+      front++;
     }
+    printf("Dequeued element: %d\n", y);
+  }
+}
+// Simple Queue operations ends here.
+// Circular Queue operations starts here.
+bool isCircularQueueFull(){
+  return (rear + 1) % SIZE == front;
 }
 
+// Circular queue empty condition same as linear queue.
+
+void circularEnqueue(int data){
+  // Base case
+  if(isCircularQueueFull()){
+    printf("Circular queue is full\n");
+    return;
+  }
+  
+  else if(isEmpty()){
+    front = rear = 0;
+  }
+  
+  else if(rear == SIZE - 1 && front != 0){
+    rear = 0;
+  }
+  else{
+    rear++;
+  }
+  arr[rear] = data;
+}
+
+void circularDequeue(){
+  int temp;
+  if(isEmpty()){
+    printf("Nothing to delete. Queue is empty...");
+    return;
+  }
+  temp = arr[front];
+  if(rear == front){
+    rear = front = -1;
+  }else{
+    front = (front + 1) % SIZE;
+  }
+  printf("Dequeued Element: %d\n", temp);
+}
+
+void displayQueue(){
+  int i, j;
+  if(rear < front){
+    for(i = front; i < SIZE; i++){
+      printf("%d ", arr[i]);
+    }
+    for(j = 0; j <= rear; j++){
+      printf("%d ", arr[j]);
+    }
+  }else{
+    for(i = front; i <= rear; i++){
+      printf("%d ", arr[i]);
+    }  
+  }
+  for(i = front; i <= rear; i++){
+    printf("%d ", arr[i]);
+  }
+  printf("\n");
+}
+
+// Implementing Queue using Singly Linked List
+
+// Creating a Node
+struct node{
+  int data;
+  struct node* next;
+};
+
+struct Queue{
+  struct node* front;
+  struct node* rear;
+};
+
+struct node* newNode(int k){
+  struct node* temp = (struct node*)malloc(sizeof(struct node));
+  temp -> data = k;
+  temp -> next = NULL;
+  return temp;
+};
+
+struct Queue* createQueue(){
+  struct Queue* head = (struct Queue*) malloc(sizeof(struct Queue));
+  head -> front = head -> rear = NULL;
+  return head;
+}
+
+void linkListEnqueue(struct Queue* head, int k){
+  struct node* q = newNode(k);
+  // Base Case
+  if(head -> rear == NULL){
+    head -> front = head -> rear = q;
+    return;
+  }
+  head -> rear -> next = q;
+  head -> rear = q;
+}
+
+void linkListDequeue(struct Queue* head){
+  if(head == NULL){
+    printf("Queue is empty. Nothing to delete...");
+    return;
+  }
+  int tempData = head -> front -> data;
+  struct node* s = head -> front;
+  head -> front = head -> front -> next;
+  if(head -> front == NULL)head -> rear = NULL;
+  s = NULL;
+  free(s);
+  printf("Dequeued element: %d\n", tempData);
+}
 
 
 
