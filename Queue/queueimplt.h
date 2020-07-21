@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#define SIZE 5
+#define SIZE 15
 // Global Variables
 int arr[SIZE];
 int front = -1;
