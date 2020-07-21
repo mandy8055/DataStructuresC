@@ -1,13 +1,13 @@
-# include <stdio.h>
-# include <stdbool.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-# define SIZE 5
-
+#define SIZE 5
+// Global Variables
 int arr[SIZE];
 int front = -1;
 int rear = -1;
-// Simple Queue operations starts here
+// Linear Queue operations starts here
 bool isEmpty(){
   return front == -1;
 }
@@ -18,7 +18,7 @@ bool isFull(){
 
 void enqueue(int el){
   if(isFull()){
-    printf("Queue is full cannot enqueue new element\n");
+    printf("Linear Queue is full cannot enqueue new element\n");
     return;
   }
   else{
@@ -54,7 +54,7 @@ void dequeue(){
     printf("Dequeued element: %d\n", y);
   }
 }
-// Simple Queue operations ends here.
+// Linear Queue operations ends here.
 // Circular Queue operations starts here.
 bool isCircularQueueFull(){
   return (rear + 1) % SIZE == front;
@@ -124,19 +124,19 @@ struct node{
   int data;
   struct node* next;
 };
-
+// Initializing front and rear pointers for the node
 struct Queue{
   struct node* front;
   struct node* rear;
 };
-
+// Function to create a new node with data k. Analyze carefully.
 struct node* newNode(int k){
   struct node* temp = (struct node*)malloc(sizeof(struct node));
   temp -> data = k;
   temp -> next = NULL;
   return temp;
 };
-
+// Utility function to create a new queue. Analyze carefully. 
 struct Queue* createQueue(){
   struct Queue* head = (struct Queue*) malloc(sizeof(struct Queue));
   head -> front = head -> rear = NULL;
@@ -145,7 +145,7 @@ struct Queue* createQueue(){
 
 void linkListEnqueue(struct Queue* head, int k){
   struct node* q = newNode(k);
-  // Base Case
+  // Base Case If the queue is initially empty and the first node is being inserted.
   if(head -> rear == NULL){
     head -> front = head -> rear = q;
     return;
