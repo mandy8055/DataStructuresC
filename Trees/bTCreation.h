@@ -129,7 +129,7 @@ struct BTNode* mirrorImage(struct BTNode* root){
 		mirrorImage(root->rightC);
 		
 //		Swap the left and right child
-		temp = mirrorImage(root->leftC);
+		temp = root->leftC;
 		root->leftC = root->rightC;
 		root->rightC = temp;
 		
