@@ -5,13 +5,13 @@
 #define MAX(X, Y) (((X) > (Y))? (X) : (Y))
 #define COUNT 10
 
-// Creating a binary Tree
+// Creating a binary Tree node
 struct BTNode{
 	int data;
 	struct BTNode* leftC;
 	struct BTNode* rightC;
 }; 
-// Helper Function to allocate a new Node
+// Helper Function to allocate a new Node to the binary tree
 struct BTNode* newNode(int data){
 	struct BTNode* btNode = (struct BTNode*)malloc(sizeof(struct BTNode));
 	btNode->data = data;
