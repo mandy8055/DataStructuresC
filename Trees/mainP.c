@@ -7,11 +7,10 @@ int main(void){
 	root->rightC = newNode(3);
 	
 	root->leftC->leftC  = newNode(4); 
-    root->leftC->rightC = newNode(5); 
-    root->rightC->leftC  = newNode(6); 
-    root->rightC->rightC = newNode(7); 
-    
-    root->leftC->leftC->leftC = newNode(8);
+    	root->leftC->rightC = newNode(5); 
+    	root->rightC->leftC  = newNode(6); 
+    	root->rightC->rightC = newNode(7); 
+    	root->leftC->leftC->leftC = newNode(8);
   
   	print2D(root);
 	printf("\n\n\n\n");
@@ -25,6 +24,7 @@ int main(void){
 
 //  Convert the given tree into its mirror image
 	struct BTNode* root2 = mirrorImage(root);
+	print2D(root2);
 	
 	if(checkBTEqual(root, root2))printf("The given two trees are equal");
 	else printf("The given two trees are not equal");
