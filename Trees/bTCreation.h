@@ -64,9 +64,6 @@ void print2D(struct BTNode *root)
 int countTotalNodes(struct BTNode* root){
 //	Base Case
 	if(root == NULL)return 0;
-//	Termination Condition
-	if(root->leftC == NULL && root->rightC == NULL)
-		return 1;
 	else{
 		return 1 + countTotalNodes(root->leftC) + countTotalNodes(root->rightC);
 	}
