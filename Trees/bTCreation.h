@@ -1,5 +1,5 @@
-#include<stdlib.h>
-#include<stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
 #define MAX(X, Y) (((X) > (Y))? (X) : (Y))
@@ -99,20 +99,20 @@ int calcHeight(struct BTNode* root){
 	if(root == NULL)return 0;
 	if(root->leftC == NULL && root->rightC == NULL)return 0;
 	else{
+		// Adding one in order to count the height of the exisitng node.
 		return (1 + MAX(calcHeight(root->leftC), calcHeight(root->rightC)));
 	}
 }
 
-// Check whether a given Binary Tree is a strict binary tree or not.
+// Check whether a given Binary Tree is a strict binary tree or not. Strict binary tree contains either a leaf node or a node having exactly 2 children.
 bool checkSBT(struct BTNode* root){
 //	Base Case
 	if(root == NULL)return true;
 //	Leaf Node
 	if(root->leftC == NULL && root->rightC == NULL)return true;
-//	Main Case
+//	Node containing exactly 2 children
 	if(root->leftC != NULL && root->rightC != NULL)
-		return (checkSBT(root->leftC) && checkSBT(root->rightC));
-		
+		return (checkSBT(root->leftC) && checkSBT(root->rightC));	
 	return false;
 }
 
@@ -120,10 +120,11 @@ bool checkSBT(struct BTNode* root){
 struct BTNode* mirrorImage(struct BTNode* root){
 //	Base Case
 	if(root == NULL)return root;
+	// If leaf node
 	if(root->leftC == NULL && root->rightC == NULL)return root;
 	else{
 		struct BTNode* temp = NULL;
-//		Do the trees
+//		Do the trees(Non-tail recursion)
 		mirrorImage(root->leftC);
 		mirrorImage(root->rightC);
 		
@@ -141,6 +142,7 @@ bool checkBTEqual(struct BTNode* root1, struct BTNode* root2){
 //	Base Case
 	if(root1 == NULL && root2 == NULL)return true;
 	if((root1 != NULL && root2 == NULL) || (root1 == NULL && root2 != NULL))return false;
+	// Recurse if both tree's current nodes are equal. 
 	if(root1->data == root2->data){
 		return (checkBTEqual(root1->leftC, root2->leftC) && checkBTEqual(root1->rightC, root2->rightC)); 
 	}
