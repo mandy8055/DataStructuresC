@@ -41,6 +41,34 @@ void insertionSort(int arr[], int size)
     }
 }
 
+// Implementation of Counting sort
+void countingSort(int arr[], int size, int range)
+{
+    int countArr[range];
+    // Filling the initial array with the 0s
+    for (int i = 0; i <= range; i++)
+    {
+        countArr[i] = 0;
+    }
+    // Populating the countArr with the frequencies.
+    for (int i = 0; i < size; i++)
+    {
+        countArr[arr[i]]++;
+    }
+
+    int k = 0; // For keeping track of the index of original array.
+    for (int i = 0; i <= range; i++)
+    {
+        if (countArr[i])
+        {
+            for (int j = 0; j < countArr[i]; j++)
+            {
+                arr[k++] = i;
+            }
+        }
+    }
+}
+
 // Utility function
 void swap(int *a, int *b)
 {
