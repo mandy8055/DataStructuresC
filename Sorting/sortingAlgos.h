@@ -46,7 +46,6 @@ void countingSort(int arr[], int size, int range)
 {
     int countArr[range];
     // Filling the countArr array initially with 0's.
-
     for (int i = 0; i <= range; i++)
     {
         countArr[i] = 0;
