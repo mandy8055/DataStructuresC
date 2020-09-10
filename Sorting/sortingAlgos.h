@@ -45,8 +45,8 @@ void insertionSort(int arr[], int size)
 void countingSort(int arr[], int size, int range)
 {
     int countArr[range];
-    // Filling the countArr array initially
-with the 0s
+    // Filling the countArr array initially with 0's.
+
     for (int i = 0; i <= range; i++)
     {
         countArr[i] = 0;
