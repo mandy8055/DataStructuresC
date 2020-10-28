@@ -3,6 +3,8 @@
 void swap(int *a, int *b);
 void insertionSort(int arr[], int size);
 void bubbleSort(int arr[], int size);
+void countingSort(int arr[], int size, int range);
+void selectionSort(int arr[], int size);
 
 // Implementation of Bubble sort
 void bubbleSort(int arr[], int size)
@@ -66,6 +68,22 @@ void countingSort(int arr[], int size, int range)
                 arr[k++] = i;
             }
         }
+    }
+}
+// Implementation of Selection Sort
+void selectionSort(int arr[], int size)
+{
+    int i, j;
+    for (i = 0; i < size; i++)
+    {
+        int jmin = i;
+        for (j = i + 1; j < size; j++)
+        {
+            if (arr[j] < arr[jmin])
+                jmin = j;
+        }
+        if (i != jmin)
+            swap(&arr[i], &arr[jmin]);
     }
 }
 

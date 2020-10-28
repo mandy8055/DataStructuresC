@@ -3,15 +3,15 @@
 #define N 7
 #define N2 10
 // Runner function for running comparison-based sorting algorithms
-/*
 int main(void)
 {
     int arr[] = {80, 20, 50, 5, 90, 23, 15};
-    bubbleSort(arr, N);
+    // bubbleSort(arr, N);
     // insertionSort(arr, N);
-    for (int i = 0; i < N2; i++)
+    selectionSort(arr, N);
+    for (int i = 0; i < N; i++)
     {
-        if (i == (N2 - 1))
+        if (i == (N - 1))
         {
             printf("%d", arr[i]);
             break;
@@ -20,8 +20,9 @@ int main(void)
     }
     return 0;
 }
-*/
+
 // Runner function for non-comparison based sorting algorithms
+/*
 int main(void)
 {
     int arr2[] = {1, 2, 4, 9, 9, 9, 4, 1, 5, 3};
@@ -37,3 +38,4 @@ int main(void)
     }
     return 0;
 }
+*/
