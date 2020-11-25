@@ -8,7 +8,8 @@ int main(void)
     int arr[] = {80, 20, 50, 5, 90, 23, 15};
     // bubbleSort(arr, N);
     // insertionSort(arr, N);
-    selectionSort(arr, N);
+    // selectionSort(arr, N);
+    quickSort(arr, 0, N - 1);
     for (int i = 0; i < N; i++)
     {
         if (i == (N - 1))
