@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define FAIL 1
 
-void freeAllocatedMemory(int **piBuffer, in nRow);
+void freeAllocatedMemory(int **piBuffer, int nRow);
 
 int main(void)
 {
