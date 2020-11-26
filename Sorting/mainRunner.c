@@ -8,17 +8,10 @@ int main(void)
     int arr[] = {80, 20, 50, 5, 90, 23, 15};
     // bubbleSort(arr, N);
     // insertionSort(arr, N);
+    mergeSort(arr, 0, N - 1);
+    // quickSort(arr, 0, N - 1);
     // selectionSort(arr, N);
-    quickSort(arr, 0, N - 1);
-    for (int i = 0; i < N; i++)
-    {
-        if (i == (N - 1))
-        {
-            printf("%d", arr[i]);
-            break;
-        }
-        printf("%d, ", arr[i]);
-    }
+    printArr(arr, N);
     return 0;
 }
 
