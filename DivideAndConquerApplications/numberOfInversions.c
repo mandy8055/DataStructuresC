@@ -38,7 +38,7 @@ int enhancedMergeSort(int arr[], int aux[], int left, int right)
     return inversionCount;
 }
 
-// Implementation of merge algorithm
+// Implementation of merge algorithm(Modified for counting number of inversions)
 int merge(int arr[], int aux[], int left, int middle, int right)
 {
     int i, j, k, count = 0;
